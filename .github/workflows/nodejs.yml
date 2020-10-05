@@ -31,7 +31,7 @@ jobs:
         webhook_url: ${{ secrets.WEBHOOK_URL_JSON }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
     - name: Call deployment hook [urlencoded]
-      uses: distributhor/workflow-webhook@v1
+      uses: distributhor/workflow-webhook@test
       env:
         webhook_type: 'form-urlencoded'
         webhook_url: ${{ secrets.WEBHOOK_URL_ENCODED }}
