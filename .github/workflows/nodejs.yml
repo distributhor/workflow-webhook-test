@@ -1,0 +1,38 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:    
+      - test
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Run yarn install
+      run: |
+        yarn install
+      env:
+        CI: true
+    - name: Call deployment hook [json]
+      uses: distributhor/workflow-webhook@test
+      env:
+        webhook_url: ${{ secrets.WEBHOOK_URL_JSON }}
+        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+    - name: Call deployment hook [urlencoded]
+      uses: distributhor/workflow-webhook@v1
+      env:
+        webhook_type: 'form-urlencoded'
+        webhook_url: ${{ secrets.WEBHOOK_URL_ENCODED }}
+        webhook_secret: ${{ secrets.WEBHOOK_SECRET }}

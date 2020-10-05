@@ -1,0 +1,6 @@
+{
+    "ext": "js",
+    "watch": ["server.js", "service.js"],
+    "ignore": ["node_modules"],
+    "exec": "node server.js"
+}

@@ -1,0 +1,45 @@
+{
+    "name": "workflow-webhook-test",
+    "version": "1.0.0",
+    "license": "UNLICENSED",
+    "private": true,
+    "main": "server.js",
+    "scripts": {
+        "develop": "nodemon",
+        "lint": "eslint '*.js'",
+        "lint:fix": "eslint --fix '*.js'",
+        "lint:format": "prettier --write '*.js'"
+      },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "dotenv": "^8.2.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "express": "^4.17.1",
+        "husky": "^3.1.0",
+        "lint-staged": "^9.5.0",
+        "nodemon": "^2.0.2",
+        "prettier": "^1.19.1",
+        "yarn": "1.17.3"
+    },
+    "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged",
+          "pre-push": "yarn lint"
+        }
+      },
+      "lint-staged": {
+        "*.{js}": [
+          "prettier --write",
+          "git add"
+        ]
+      },
+      "prettier": {
+        "printWidth": 120
+      },
+      "engines": {
+        "node": ">=10.0.0",
+        "npm": ">=6.0.0"
+      }
+}
