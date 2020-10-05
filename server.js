@@ -4,14 +4,14 @@ const service = require("./service");
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true, verify: service.saveRawBodyForRequest }));
+app.use(bodyParser.json({ verify: service.saveRawRequestBody }));
+app.use(bodyParser.urlencoded({ extended: true, verify: service.saveRawRequestBody }));
 
-app.get("/health-check", (req, res) => {
+app.get("/service-check", (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/health-check", (req, res) => {
+app.post("/service-check", (req, res) => {
   res.sendStatus(200);
 });
 
@@ -22,7 +22,7 @@ app.post("/webhook/json", service.verifyGithubJsonRequest, (req, res) => {
   } catch (e) {
     console.log("GitHub JSON request verification error");
     console.log(e);
-    return res.sendStatus(503);
+    return res.sendStatus(500);
   }
 });
 
@@ -33,7 +33,7 @@ app.post("/webhook/urlencoded", service.verifyGithubUrlEncodedRequest, (req, res
   } catch (e) {
     console.log("GitHub URLENCODED request verification error");
     console.log(e);
-    return res.sendStatus(503);
+    return res.sendStatus(500);
   }
 });
 
