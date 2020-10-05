@@ -10,6 +10,7 @@ function saveRawRequestBody(req, res, buf, encoding) {
 }
 
 function verifyGithubRequest(req, res, next) {
+  console.log("");
   console.log("verifyGithubRequest ...");
   console.log("Headers:");
   console.log(req.headers);
