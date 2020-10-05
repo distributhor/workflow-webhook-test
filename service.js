@@ -4,6 +4,10 @@ const crypto = require("crypto");
 require("dotenv").config({ path: path.join(__dirname, "/.env") });
 
 function verifyGithubJsonRequest(req, res, next) {
+  console.log("verifyGithubJsonRequest");
+  console.log(req.headers);
+  console.log(req.body);
+
   if (!process.env.WEBHOOK_SECRET) {
     console.log("No WEBHOOK_SECRET configured");
     return res.sendStatus(503);
@@ -34,6 +38,10 @@ function verifyGithubJsonRequest(req, res, next) {
 }
 
 function verifyGithubUrlEncodedRequest(req, res, next) {
+  console.log("verifyGithubUrlEncodedRequest");
+  console.log(req.headers);
+  console.log(req.body);
+
   if (!process.env.WEBHOOK_SECRET) {
     console.log("No WEBHOOK_SECRET configured");
     return res.sendStatus(503);
