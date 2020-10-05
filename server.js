@@ -15,7 +15,7 @@ app.post("/service-check", (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/webhook/json", service.verifyGithubJsonRequest, (req, res) => {
+app.post("/webhook/json", service.verifyGithubRequest, (req, res) => {
   try {
     console.log("GitHub JSON request verification success");
     res.sendStatus(200);
@@ -26,7 +26,7 @@ app.post("/webhook/json", service.verifyGithubJsonRequest, (req, res) => {
   }
 });
 
-app.post("/webhook/urlencoded", service.verifyGithubUrlEncodedRequest, (req, res) => {
+app.post("/webhook/urlencoded", service.verifyGithubRequest, (req, res) => {
   try {
     console.log("GitHub URLENCODED request verification success");
     res.sendStatus(200);
