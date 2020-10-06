@@ -39,7 +39,7 @@ function verifyGithubRequest(req, res, next) {
       .digest("hex");
 
   // For JSON request one can also do the signature as follows (instead of raw body):
-  // const signatureAlt =
+  // const signature =
   //   "sha1=" +
   //   crypto
   //     .createHmac("sha1", process.env.WEBHOOK_SECRET)
