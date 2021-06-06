@@ -32,7 +32,6 @@ jobs:
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         data: '{"customProperty": "customValue"}'
         verify_ssl: false
-        verbose: false
     - name: Call deployment hook [urlencoded]
       uses: distributhor/workflow-webhook@test
       env:
