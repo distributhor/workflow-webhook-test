@@ -40,4 +40,4 @@ jobs:
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         data: 'custom_parameter=custom_value'
         verify_ssl: false
-        verbose: true
+        silent: true
