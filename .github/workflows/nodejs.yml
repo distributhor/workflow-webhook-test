@@ -39,5 +39,5 @@ jobs:
         webhook_url: ${{ secrets.WEBHOOK_URL_ENCODED }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         data: 'custom_parameter=custom_value'
-        verify_ssl: false
+        verify_ssl: true
         verbose: true
