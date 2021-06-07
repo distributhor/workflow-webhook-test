@@ -26,14 +26,14 @@ jobs:
       env:
         CI: true
     - name: Call deployment hook [json]
-      uses: distributhor/workflow-webhook@test
+      uses: distributhor/workflow-webhook@v2
       env:
         webhook_url: ${{ secrets.WEBHOOK_URL_JSON }}
         webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
         data: '{"customProperty": "customValue"}'
         verbose: true
     - name: Call deployment hook [urlencoded]
-      uses: distributhor/workflow-webhook@test
+      uses: distributhor/workflow-webhook@v2
       env:
         webhook_type: 'form-urlencoded'
         webhook_url: ${{ secrets.WEBHOOK_URL_ENCODED }}
